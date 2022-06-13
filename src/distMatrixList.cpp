@@ -31,7 +31,7 @@ int main(int argc , char *argv[]){
 	//The example is with parameters of specific numbers.
 	//args is the tutorial names.
 	string pwd = "/home/user_home/public/demo_cpp/benchmark/distMatrixList.cpp";
-	string dependancy = "mash";
+	string dependancy = "mash, openmp, system(cmd)";
 	string example = application + " 37803.mshList 150000.msh 37803_150000+distDir 37803_150000_dense";
 	args.push_back("mshList");
 	args.push_back("ref.msh");
