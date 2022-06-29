@@ -30,7 +30,7 @@ int main(int argc , char *argv[]){
 	//========= parameters need changing ========
 	//The example is with parameters of specific numbers.
 	//args is the tutorial names.
-	string pwd = "/home/user_home/public/demo_cpp/benchmark/src/split_groundTruth.cpp";
+	string pwd = "/home/user_home/public/benchmark/src/split_groundTruth.cpp";
 	string dependency = "groundTruth (format in <accession, taxid, organism_name>)";
 	string example = application + " million.groundTruth 375528.fileList resultDir";
 	args.push_back("totalGroundTruth");
