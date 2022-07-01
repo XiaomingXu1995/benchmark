@@ -1,4 +1,4 @@
-all: split-sketch distMatrixList filterList split-fileListGroundTruth denseRelation judge-ok map-661k-million filter-status filter-equal-clust mergeSeq
+all: split-sketch distMatrixList filterList split-fileListGroundTruth denseRelation judge-ok map-661k-million filter-status filter-equal-clust mergeSeq checkMD5 mergeFASTA
 split-sketch: src/split_getSketch.cpp
 	g++ -O3 src/split_getSketch.cpp -o split-sketch -fopenmp
 distMatrixList: src/distMatrixList.cpp
@@ -19,7 +19,11 @@ filter-equal-clust: src/filterEqualClust.cpp
 	g++ -O3 src/filterEqualClust.cpp -o filter-equal-clust
 mergeSeq: src/mergeSeq.cpp
 	g++ -O3 src/mergeSeq.cpp -o mergeSeq -lz -fopenmp
+checkMD5: src/checkMD5.cpp
+	g++ -O3 src/checkMD5.cpp -o checkMD5
+mergeFASTA: src/mergeFASTA.cpp
+	g++ -O3 src/mergeFASTA.cpp -o mergeFASTA -lz -fopenmp
 
 clean:
-	rm split-sketch distMatrixList filterList split-fileListGroundTruth denseRelation judge-ok map-661k-million filter-status filter-equal-clust mergeSeq
+	rm split-sketch distMatrixList filterList split-fileListGroundTruth denseRelation judge-ok map-661k-million filter-status filter-equal-clust mergeSeq checkMD5 mergeFASTA
 	
