@@ -79,12 +79,19 @@ int main(int argc , char *argv[]){
 
 	for(auto x : idMD5Map){
 		int clustIndex = x.first;
-		if(x.second.size() == 1){
-			for(auto y : idClustMap[clustIndex]){
-				cout << *(x.second.begin()) << '\t' << y << endl;
+		if(x.second.size() != 1){
+			for(auto y : x.second){
+				cout << y << endl;
 			}
 			cout << endl;
+
 		}
+		//if(x.second.size() == 1){
+		//	for(auto y : idClustMap[clustIndex]){
+		//		cout << *(x.second.begin()) << '\t' << y << endl;
+		//	}
+		//	cout << endl;
+		//}
 	}
 		
 

@@ -1,4 +1,5 @@
-all: split-sketch distMatrixList filterList split-fileListGroundTruth denseRelation judge-ok map-661k-million filter-status filter-equal-clust mergeSeq checkMD5 mergeFASTA
+all: split-sketch distMatrixList filterList split-fileListGroundTruth denseRelation judge-ok map-661k-million filter-status filter-equal-clust mergeSeq checkMD5 mergeFASTA getFileSize line1
+line1: getKmerSize filterSeqN
 split-sketch: src/split_getSketch.cpp
 	g++ -O3 src/split_getSketch.cpp -o split-sketch -fopenmp
 distMatrixList: src/distMatrixList.cpp
@@ -23,7 +24,14 @@ checkMD5: src/checkMD5.cpp
 	g++ -O3 src/checkMD5.cpp -o checkMD5
 mergeFASTA: src/mergeFASTA.cpp
 	g++ -O3 src/mergeFASTA.cpp -o mergeFASTA -lz -fopenmp
+getFileSize: src/getFileSize.cpp
+	g++ -O3 src/getFileSize.cpp -o getFileSize
+getKmerSize: src/getKmerSize.cpp
+	g++ -O3 src/getKmerSize.cpp -o getKmerSize
+filterSeqN: src/filterSeqN.cpp
+	g++ -O3 src/filterSeqN.cpp -o filterSeqN
 
 clean:
-	rm split-sketch distMatrixList filterList split-fileListGroundTruth denseRelation judge-ok map-661k-million filter-status filter-equal-clust mergeSeq checkMD5 mergeFASTA
+	rm split-sketch distMatrixList filterList split-fileListGroundTruth denseRelation judge-ok map-661k-million filter-status filter-equal-clust mergeSeq checkMD5 mergeFASTA getFileSize \
+			getKmerSize filterSeqN
 	

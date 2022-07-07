@@ -99,19 +99,26 @@ int main(int argc , char *argv[]){
 		clustArr.push_back(curClust);
 	}
 
-	string outputFileNew = outputFile + ".new";
+	string outputDir = outputFile + "Dir";
+	string cmd0 = "mkdir -p " + outputDir;
+	system(cmd0.c_str());
 	ofstream ofs(outputFile);
-	ofstream ofs1(outputFileNew);
+	string outputFileNew = outputFile + ".new";
+	ofstream ofs2(outputFileNew);
+	int fileIndex = 1;
 	for(int i = 0; i < clustArr.size(); i++){
 		//cerr << clustArr[i].size() << endl;
 		if(clustArr[i].size() != 1)
 		{
+			string outputFileNew = outputDir + '/' + to_string(fileIndex++) + ".list";
+			ofstream ofs1(outputFileNew);
 			for(auto x : clustArr[i]){
 				ofs << x << endl;
 				ofs1 << x << endl;
+				ofs2 << x << endl;
 			}
-			ofs1 << endl;
-			//ofs << endl;
+			ofs1.close();
+			ofs2 << endl;
 		}
 	}
 	ofs.close();
