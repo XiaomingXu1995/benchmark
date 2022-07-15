@@ -1,5 +1,5 @@
 all: split-sketch distMatrixList filterList split-fileListGroundTruth denseRelation judge-ok map-661k-million filter-status filter-equal-clust mergeSeq checkMD5 mergeFASTA getFileSize line1
-line1: getKmerSize filterSeqN
+line1: getKmerSize filterSeqN seqName-map-accession format-scatter-draw simulate-longSequence
 split-sketch: src/split_getSketch.cpp
 	g++ -O3 src/split_getSketch.cpp -o split-sketch -fopenmp
 distMatrixList: src/distMatrixList.cpp
@@ -30,8 +30,14 @@ getKmerSize: src/getKmerSize.cpp
 	g++ -O3 src/getKmerSize.cpp -o getKmerSize
 filterSeqN: src/filterSeqN.cpp
 	g++ -O3 src/filterSeqN.cpp -o filterSeqN
+seqName-map-accession: src/seqNameMapAccession.cpp
+	g++ -O3 src/seqNameMapAccession.cpp -lz -fopenmp -o seqName-map-accession
+format-scatter-draw: src/formatScatterDraw.cpp
+	g++ -O3 src/formatScatterDraw.cpp -o format-scatter-draw
+simulate-longSequence: src/simulate_longSequence.cpp
+	g++ -O3 src/simulate_longSequence.cpp -o simulate-longSequence
 
 clean:
 	rm split-sketch distMatrixList filterList split-fileListGroundTruth denseRelation judge-ok map-661k-million filter-status filter-equal-clust mergeSeq checkMD5 mergeFASTA getFileSize \
-			getKmerSize filterSeqN
+			getKmerSize filterSeqN seqName-map-accession format-scatter-draw simulate-longSequence
 	
